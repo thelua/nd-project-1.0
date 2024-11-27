@@ -1,0 +1,60 @@
+version: 2
+
+models:
+  - name: dim_cidades
+    description: "Tabela dimensional que contém informações das cidades, com o estado associado"
+    columns:
+      - name: cidade_id
+      - name: nome_cidade
+      - name: estado_id
+      - name: data_inclusao
+      - name: data_atualizacao
+
+
+  - name: dim_clientes
+    description: "Tabela dimensional com informações sobre os clientes e sua localização"
+    columns:
+      - name: cliente_id
+      - name: nome_cliente
+      - name: endereco
+      - name: concessionaria_id
+      - name: data_inclusao
+      - name: data_atualizacao
+
+  - name: dim_concessionarias
+    description: "Tabela dimensional com informações sobre as concessionárias"
+    columns:
+      - name: concessionaria_id
+      - name: nome_concessionaria,
+      - name: cidade_id
+      - name: data_inclusao
+      - name: data_atualizacao
+
+  - name: dim_estados
+    description: "Tabela dimensional com informações dos estados"
+    columns:
+      - name: estado_id
+      - name: nome_estado
+      - name: sigla
+      - name: data_inclusao
+      - name: data_atualizacao
+
+  - name: dim_veiculos
+    description: "Tabela dimensional com informações sobre os veículos"
+    columns:
+      - name: veiculo_id
+      - name: nome_veiculo
+      - name: tipo
+      - name: valor_sugerido
+      - name: data_inclusao
+      - name: data_atualizacao
+
+  - name: dim_vendedores
+    description: "Tabela dimensional com informações sobre os vendedores"
+    columns:
+      - name: vendedor_id
+      - name: nome_vendedor
+      - name: concessionaria_id
+      - name: data_inclusao
+      - name: data_atualizacao
+

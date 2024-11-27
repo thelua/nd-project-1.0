@@ -1,0 +1,66 @@
+version: 2
+
+models:
+  - name: fct_vendas
+    description: |
+      Registra as transações de vendas, associando dados de vendas com as dimensões de clientes, veículos, concessionárias, vendedores e informações de data.
+      Modelo incremental para carregar apenas as novas transações de vendas.
+    columns:
+      - name: venda_id
+        description: "Identificador único da transação de venda"
+        tests:
+          - unique
+          - not_null
+
+      - name: veiculo_id
+        description: "Identificador do veículo vendido, associado à tabela de veículos (dim_veiculos)"
+        tests:
+          - not_null
+          - relationships:
+              to: dim_veiculos.veiculo_id
+              field: veiculo_id
+
+      - name: concessionaria_id
+        description: "Identificador da concessionária onde a venda foi realizada, associada à tabela de concessionárias"
+        tests:
+          - not_null
+          - relationships:
+              to: dim_concessionarias.concessionaria_id
+              field: concessionaria_id
+
+      - name: vendedor_id
+        description: "Identificador do vendedor responsável pela transação de venda, associado à tabela de vendedores"
+        tests:
+          - not_null
+          - relationships:
+              to: dim_vendedores.vendedor_id
+              field: vendedor_id
+
+      - name: cliente_id
+        description: "Identificador do cliente que comprou o veículo"
+        tests:
+          - not_null
+          - relationships:
+              to: dim_clientes.cliente_id
+              field: cliente_id
+
+      - name: valor_venda
+        description: "Valor total da venda realizada"
+        tests:
+          - not_null
+          - numeric
+
+      - name: data_venda
+        description: "Data da transação de venda"
+        tests:
+          - not_null
+
+      - name: data_inclusao
+        description: "Data de inclusão do registro da venda na base de dados"
+        tests:
+          - not_null
+
+      - name: data_atualizacao
+        description: "Data da última atualização do registro da venda na base de dados. Caso não exista, o valor de data_inclusao vai ser o utilizado."
+        tests:
+          - not_null
