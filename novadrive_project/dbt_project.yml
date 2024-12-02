@@ -32,7 +32,8 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   novadrive_project:
     staging:
-      +schema: staging  
+      +schema: staging
+      +database: novadrive-stage  
     dimension:
       +schema: dimension  
     fact:

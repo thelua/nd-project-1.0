@@ -10,7 +10,7 @@ WITH source AS (
         data_venda,
         data_inclusao,
         COALESCE(data_atualizacao, data_venda) AS data_atualizacao
-    FROM {{ source('public', 'vendas') }}
+    FROM {{ source('sources', 'vendas') }}
 )
 
 SELECT

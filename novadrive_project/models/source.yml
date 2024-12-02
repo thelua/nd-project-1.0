@@ -2,8 +2,8 @@ version: 2
 
 sources:
     - name: sources
-      database: NOVADRIVE
-      schema: STAGE
+      database: novadrive-stage
+      schema: public
       tables:
         - name: cidades
         - name: clientes

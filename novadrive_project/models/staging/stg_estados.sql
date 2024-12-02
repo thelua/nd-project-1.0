@@ -6,7 +6,7 @@ WITH source AS (
         UPPER(sigla) AS sigla,
         data_inclusao,
         data_atualizacao
-    FROM {{ source('public', 'estados') }}
+    FROM {{ source('sources', 'estados') }}
 )
 
 SELECT

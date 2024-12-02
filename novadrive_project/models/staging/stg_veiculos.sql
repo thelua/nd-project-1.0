@@ -5,9 +5,9 @@ WITH source AS (
         nome,
         tipo,
         valor::DECIMAL(10,2) AS valor,
-        COALESCE(data_atualizacao, CURRENT_TIMESTAMP()) AS data_atualizacao,
+        COALESCE(data_atualizacao, CURRENT_TIMESTAMP) AS data_atualizacao,
         data_inclusao
-    FROM {{ source('public', 'veiculos') }}
+    FROM {{ source('sources', 'veiculos') }}
 )
 
 SELECT

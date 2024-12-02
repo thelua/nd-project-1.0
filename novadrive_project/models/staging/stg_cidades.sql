@@ -6,7 +6,7 @@ WITH source AS (
         id_estados,
         data_inclusao,
         COALESCE(data_atualizacao, data_inclusao) AS data_atualizacao 
-    FROM {{ source('public', 'cidades') }}
+    FROM {{ source('sources', 'cidades') }}
 )
 
 SELECT

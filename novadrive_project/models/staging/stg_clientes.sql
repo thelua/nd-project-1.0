@@ -7,7 +7,7 @@ WITH source AS (
         id_concessionarias,
         data_inclusao,
         COALESCE(data_atualizacao, data_inclusao) AS data_atualizacao
-    FROM {{ source('public', 'clientes') }}
+    FROM {{ source('sources', 'clientes') }}
 )
 
 SELECT
