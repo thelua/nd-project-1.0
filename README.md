@@ -45,3 +45,5 @@ dbt docs serve --port 8001
 
 ## Visualização
 Para acessar o dashboard, feito em PowerBI, acesse:
+
+[DASH ND](https://app.powerbi.com/view?r=eyJrIjoiMWYwMjZlNWYtMjdiZC00NTc5LWExZTEtMzFmNmUxZThiNTdmIiwidCI6IjdlOTNlMjg2LWIyOWEtNDQ1NC1hNDFhLWU4NDE5ZWM5ZGViNSJ9)
