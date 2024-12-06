@@ -12,7 +12,7 @@ Foram utilizados Apache Airflow, Docker, dbt e PostgreSQL.
                |--> dbt (Transformações)
                |--> Visualização de Dados (Power BI)
 
-   ![Icons da Arquitetura](img\icons.png)
+   ![Icons da Arquitetura](img/icons.png)
 
 ## Requisitos
 Para conectar ao banco de dados de leitura:
@@ -27,7 +27,7 @@ docker-compose up -d
 
 Acesse o localhost:8080, e execute a dag *database_structure*:
 
-![Dags no Airflow](img\image1.png)
+![Dags no Airflow](img/image1.png)
 
 
 
