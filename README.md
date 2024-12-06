@@ -5,12 +5,14 @@ Baseado em um projeto de Engenharia de Dados na [Udemy](https://www.udemy.com/co
 ### Ferramentas 
 Foram utilizados Apache Airflow, Docker, dbt e PostgreSQL.
 
-
+É necessário ter o [Docker](https://www.docker.com/) instalado na máquina local;
 
 ## Arquitetura 
    Fonte de Dados Original (Postgres) --> Airflow (Orquestração) --> Fonte de Dados em Stage (Postgres)
                |--> dbt (Transformações)
                |--> Visualização de Dados (Power BI)
+
+   ![Icons da Arquitetura](img\icons.png)
 
 ## Requisitos
 Para conectar ao banco de dados de leitura:
@@ -22,6 +24,13 @@ Dentro do diretório do *airflow*:
 ```
 docker-compose up -d
 ``` 
+
+Acesse o localhost:8080, e execute a dag *database_structure*:
+
+![Dags no Airflow](img\image1.png)
+
+
+
 
 ## Requisitos - DBT
 Dentro do diretório *novadrive-project*
