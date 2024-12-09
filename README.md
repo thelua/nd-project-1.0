@@ -21,15 +21,21 @@ Para conectar ao banco de dados de leitura:
 
 Dentro do diretório do *airflow*:
 
+No arquivo *conn.py*, altere suas credenciais locais para a criação do banco:
+![Credenciais script](img/image.png)
+
+E em seguida, suba os conteiners:
+
 ```
 docker-compose up -d
 ``` 
+
 
 Acesse o localhost:8080, e execute a dag *database_structure*:
 
 ![Dags no Airflow](img/image1.png)
 
-
+E execute a dag de *principal_to_stage*!
 
 
 ## Requisitos - DBT
