@@ -20,11 +20,10 @@ def create_connections():
             conn_id='novadrive-stage',
             conn_type='postgres',
             host='host.docker.internal',
-            login='{POSTGRES_USER}', ##Coloque seu  usuario aqui 
-            password='{POSTGRES_SENHA}', ##Coloque sua senha aqui 
+            login='postgres', ##Coloque seu  usuario aqui 
+            password='senha', ##Coloque sua senha aqui 
             port=5432,
-            dbname='novadrive-stage',
-            schema='public'
+            schema='novadrive-stage.public'
         )
     ]
 

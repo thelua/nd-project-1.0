@@ -23,7 +23,7 @@ with DAG(
     def create_db():
         postgres_hook = PostgresHook(postgres_conn_id='novadrive-stage')  
         conn = postgres_hook.get_conn()
-        conn.autocommit = True  # Necessário para executar CREATE DATABASE fora de uma transação
+        conn.autocommit = True  
 
         with conn.cursor() as cursor:
             cursor.execute("SELECT 1 FROM pg_database WHERE datname = 'novadrive_stage'")
