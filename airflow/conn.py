@@ -1,5 +1,14 @@
+from airflow import DAG
 from airflow.models import Connection
 from airflow import settings
+from airflow.operators.python import PythonOperator
+from airflow.utils.dates import days_ago
+
+default_args = {
+    'owner': 'airflow',
+    'start_date': days_ago(1),
+    'retries': 1,
+}
 
 def create_connections():
     session = settings.Session()
@@ -14,18 +23,27 @@ def create_connections():
             port=5432,
             schema='novadrive'
         ),
-
-        #conexao do stage criado localmente
         Connection(
             conn_id='novadrive-stage',
             conn_type='postgres',
             host='host.docker.internal',
-            login='postgres', ##Coloque seu  usuario aqui 
-            password='senha', ##Coloque sua senha aqui 
+            login='postgres',  # Substitua pelo seu usuário
+            password='senha',  # Substitua pela sua senha
             port=5432,
             schema='novadrive-stage.public'
+        ),
+        Connection(
+            conn_id='postgres-default',
+            conn_type='postgres',
+            host='airflow-postgres-1',
+            login='airflow', 
+            password='airflow',  
+            port=5432,
+            schema='postgres'
         )
-    ]
+
+
+    ] 
 
     for conn in connections:
         existing_conn = session.query(Connection).filter_by(conn_id=conn.conn_id).first()
@@ -36,7 +54,17 @@ def create_connections():
             print(f"Adicionando: {conn.conn_id}")
     
     session.commit()
-    print("Adicionado")
+    print("Conexões adicionadas com sucesso!")
 
-if __name__ == "__main__":
-    create_connections()
+with DAG(
+    dag_id='create_airflow_connections',
+    default_args=default_args,
+    schedule_interval=None,
+    catchup=False,
+    description='DAG para criar conexões no Airflow',
+) as dag:
+
+    create_connections_task = PythonOperator(
+        task_id='create_connections_task',
+        python_callable=create_connections,
+    )

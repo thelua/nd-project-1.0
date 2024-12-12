@@ -27,14 +27,18 @@ No arquivo *conn.py*, altere suas credenciais locais para a criação do banco:
 E em seguida, suba os conteiners:
 
 ```
-docker-compose up -d
+docker-compose up --build
 ``` 
 
-
-Acesse o localhost:8080, e execute a dag *database_structure*:
+Acesse o localhost:8080, e execute a dag *database_structure* parar criar o banco de dados e suas tabelas:
 
 ![Dags no Airflow](img/image1.png)
 
+É possível executar, no diretório do airflow no terminal, o comando para verificar se foi criado corretamente:
+
+```
+docker exec -it airflow-postgres-1 psql -U airflow
+```
 E execute a dag de *principal_to_stage*!
 
 

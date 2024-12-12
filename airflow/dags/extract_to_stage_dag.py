@@ -20,7 +20,6 @@ default_args = {
 
 
 
-
 def postgres_to_postgres_etl():
     tables = ['veiculos', 'estados', 'cidades', 'concessionarias', 'vendedores', 'clientes', 'vendas']
     
@@ -50,7 +49,7 @@ def postgres_to_postgres_etl():
                     pg_cursor.execute(f"SELECT {columns_list_str} FROM {table_name} WHERE {primary_key} > {max_id}")
                     rows = pg_cursor.fetchall()
                     
-                    with PostgresHook(postgres_conn_id='novadrive-stage').get_conn() as stage_conn:
+                    with PostgresHook(postgres_conn_id='postgres-default').get_conn() as stage_conn:
                         with stage_conn.cursor() as stage_cursor:
                             insert_query = f"INSERT INTO {table_name} ({columns_list_str}) VALUES ({placeholders})"
                             for row in rows:
